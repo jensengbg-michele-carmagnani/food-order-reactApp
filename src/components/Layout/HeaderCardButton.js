@@ -5,10 +5,10 @@ import CartIcon from "../Cart/CartIcon";
 import classes from './HeaderCardButton.module.css'
 const HeaderCardButton = (props) => {
 const cartCtx = useContext(CartContext)
-
-const numberOfCartItems = cartCtx.items.reduce((curNumber, item) =>{
-  return curNumber + item.amount;
+const numberOfCartItems = cartCtx.items.reduce((currentNumber, item) =>{
+  return currentNumber + item.amount;
 }, 0);
+console.log('ctxCart ', numberOfCartItems)
 
   return (
     <button className={classes.button} onClick={props.onClick}>

@@ -8,7 +8,7 @@ const MealItemForm = (props) => {
 
   const sumbmitHanlder = (event) => {
     event.preventDefault();
-
+  
     const enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
 
@@ -26,7 +26,7 @@ const MealItemForm = (props) => {
     <form className={classes.form} onSubmit={sumbmitHanlder}>
       <Input
         ref={amountInputRef}
-        label="Amaount"
+        label="Amount"
         input={{
           id: "amount" + props.id,
           type: "number",

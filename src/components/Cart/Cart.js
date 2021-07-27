@@ -8,12 +8,21 @@ import classes from "./CartItems.module.css";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  console.log("CartCtx", cartCtx);
-  const totalAmount = `$${cartCtx.totalAmaount.toFixed(2)}`;
+
+  console.log(' AMOUNT IN CART.JS', cartCtx)
+  let totalAmount = `$${cartCtx.totalAmaount}`;
+  
+
   const hasItems = cartCtx.addItem.length > 0;
 
-  const cartItemRemoveHandler = (id) => {};
-  const cartItemAddHandler = (item) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id)
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({...item, amount:1})
+  };
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
@@ -22,7 +31,7 @@ const Cart = (props) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
-          onRemove={cartItemRemoveHandler.bind(null, item.id)} 
+          onRemove={cartItemRemoveHandler.bind(null, item.id)}
           onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
